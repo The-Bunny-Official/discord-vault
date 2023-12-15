@@ -17,16 +17,16 @@ Step 4:
 
 ## Usage
 `/list [password]` - Lists all the files available. <br>
-[password] - Vault password set in the config.
+[password] - Vault password set in the config.<br>
 
 `/upload [password] [file] (rename)` - Upload a file to the vault.<br>
-[password] - Vault password set in the config.
-[file] - File to upload to vault.
-(rename) - Rename the file. (Optional)
+[password] - Vault password set in the config.<br>
+[file] - File to upload to vault.<br>
+(rename) - Rename the file. (Optional)<br>
 
 `/vault` - Displays the `Vault Modal`
 
-`Vault Modal [password] [item]` - Displays a vault item.
-[password] - Vault password set in the config.
+`Vault Modal [password] [item]` - Displays a vault item.<br>
+[password] - Vault password set in the config.<br>
 [item] - Name of item to grab, case sensitive, requires file extension.
   
