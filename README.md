@@ -10,9 +10,12 @@ Step 2:
 - Edit the config.json according to config.example.json
 
 Step 3:
-- Install all packages using: `npm i`
+- Create a folder titled "vault"
 
 Step 4:
+- Install all packages using: `npm i`
+
+Step 5:
 - Run the bot using `node .`
 
 ## Usage
