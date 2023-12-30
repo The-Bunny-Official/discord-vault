@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { ModalSubmitInteraction, Client, EmbedBuilder, AttachmentBuilder } = require("discord.js");
+const { ModalSubmitInteraction, Client, EmbedBuilder, AttachmentBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require("discord.js");
 const fs = require("fs");
 
 module.exports = {
@@ -20,7 +20,29 @@ module.exports = {
                 .setFile(fs.readFileSync(`./vault/${item}`))
                 .setName(item);
 
-                await interaction.editReply({ files: [attachment], ephemeral: true });
+                let DeleteButton = new ButtonBuilder()
+                .setCustomId("Delete")
+                .setLabel("Delete File")
+                .setStyle(ButtonStyle.Danger)
+                .setEmoji("🗑️");
+
+                const row = new ActionRowBuilder()
+                .setComponents(DeleteButton);
+
+                const response = await interaction.editReply({ files: [attachment], ephemeral: true, components: [row] });
+
+                const collectorFilter = i => i.user.id === interaction.user.id;
+                try {
+                    const confirmation = await response.awaitMessageComponent({ filter: collectorFilter, time: 60_000 });
+
+                    fs.unlinkSync(`./vault/${item}`);
+
+                    await confirmation.update({ content: "File deleted.", files: [], components: [] });
+                } catch (e) {
+                    DeleteButton.setDisabled(true);
+                    await interaction.editReply({ components: [row] });
+                }
+
             } else {
                 const embed = new EmbedBuilder()
                 .setColor("Red")
