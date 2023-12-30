@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ModalBuilder, ChatInputCommandInteraction, Client, TextInputBuilder, TextInputStyle } = require("discord.js");
 
 module.exports = {
-    name: "vault",
+    name: "view",
     data: new SlashCommandBuilder()
-    .setName("vault")
-    .setDescription("Access the vault"),
+    .setName("view")
+    .setDescription("View an item in the vault"),
     /**
      * 
      * @param {ChatInputCommandInteraction} interaction 
